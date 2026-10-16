@@ -9,14 +9,22 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="script.js" defer></script>
 </head>
 <body>
+  <!-- Action Bar -->
+  <div class="action-bar">
+    <button id="print-resume-btn" class="action-btn">
+      <i class="fa-solid fa-print"></i> Print / Save as PDF
+    </button>
+  </div>
+
   <div class="resume-wrapper">
     <!-- Sidebar -->
     <aside class="sidebar">
       <div class="profile-card">
         <h1 class="user-name">AMIT <span>KUSHWAHA</span></h1>
-        <p class="user-role">B.Tech Student in CSE</p>
+        <p class="user-role">3rd Year B.Tech Student in CSE</p>
       </div>
 
       <div class="side-block">
@@ -26,14 +34,14 @@
             <i class="fa-solid fa-envelope"></i>
             <div>
               <span class="label">Email</span>
-              <a href="mailto:hydranarcoo@gmail.com">hydranarcoo@gmail.com</a>
+              <a href="mailto:hydranarcoo@gmail.com" class="copy-trigger" data-copy="hydranarcoo@gmail.com" data-type="Email" title="Click to copy email">hydranarcoo@gmail.com</a>
             </div>
           </li>
           <li>
             <i class="fa-solid fa-phone"></i>
             <div>
               <span class="label">Phone</span>
-              <a href="tel:+918109315812">+91 8109315812</a>
+              <a href="tel:+918109315812" class="copy-trigger" data-copy="+918109315812" data-type="Phone number" title="Click to copy phone">+91 8109315812</a>
             </div>
           </li>
           <li>
@@ -51,7 +59,7 @@
         <div class="edu-card">
           <h4>B.Tech, CSE</h4>
           <p class="college-name">Global Institute of Engineering</p>
-          <span class="badge">Currently Pursuing</span>
+          <span class="badge">Currently Pursuing (3rd Year)</span>
         </div>
         <div class="edu-card" style="margin-top: 15px;">
           <h4>Higher Secondary (12th)</h4>
@@ -72,7 +80,7 @@
         <div class="lang-row">
           <div class="lang-info">
             <span>English</span>
-            <span>Upper Intermediate (B2)</span>
+            <span>Intermediate (B2)</span>
           </div>
           <div class="bar-bg"><div class="bar-fill" style="width: 75%;"></div></div>
         </div>
@@ -81,10 +89,10 @@
       <div class="side-block">
         <h3 class="side-heading"><i class="fa-solid fa-compass"></i> Interests</h3>
         <div class="chip-group">
-          <span class="chip">Software Tech</span>
-          <span class="chip">Web Technologies</span>
-          <span class="chip">Computer Systems</span>
           <span class="chip">Problem Solving</span>
+          <span class="chip">Web Basics</span>
+          <span class="chip">Computer Systems</span>
+          <span class="chip">Coding Practice</span>
         </div>
       </div>
     </aside>
@@ -98,7 +106,7 @@
           <h2>Professional Summary</h2>
         </div>
         <p class="summary-para">
-          Dynamic and motivated B.Tech Computer Science & Engineering student at Global Institute of Engineering with a solid academic foundation from Green Valley Public School. Demonstrated aptitude in technical problem-solving, programming fundamentals, and continuous learning, complemented by effective verbal and written communication skills. Eager to contribute technical skills, dedication, and a proactive team attitude to software and engineering projects.
+          Motivated 3rd-year B.Tech Computer Science & Engineering student at Global Institute of Engineering with a solid academic background from Green Valley Public School. Sound understanding of C++, Object-Oriented Programming (OOP), fundamental data structures, and foundational web development (HTML, CSS, JavaScript). Passionate about writing clean code, solving logical problems, and actively seeking an entry-level software or internship role to contribute and grow within a tech team.
         </p>
       </section>
 
@@ -112,27 +120,23 @@
           <div class="skill-category">
             <h4>Core Strengths</h4>
             <div class="skill-tags">
-              <span><i class="fa-solid fa-brain"></i> Analytical Thinking</span>
               <span><i class="fa-solid fa-lightbulb"></i> Problem Solving & Logic</span>
-              <span><i class="fa-solid fa-bolt"></i> Fast Learner & Adaptability</span>
+              <span><i class="fa-solid fa-brain"></i> Analytical Thinking</span>
+              <span><i class="fa-solid fa-bolt"></i> Fast Learner</span>
               <span><i class="fa-solid fa-clock"></i> Time Management</span>
-              <span><i class="fa-solid fa-bug-slash"></i> Attention to Detail & Debugging</span>
-              <span><i class="fa-solid fa-list-check"></i> Task Prioritization</span>
+              <span><i class="fa-solid fa-people-arrows"></i> Team Collaboration</span>
             </div>
           </div>
           <div class="skill-category">
             <h4>Technical & Management</h4>
             <div class="skill-tags">
-              <span><i class="fa-solid fa-code"></i> C / C++ & Core Java</span>
-              <span><i class="fa-brands fa-python"></i> Python Programming</span>
-              <span><i class="fa-solid fa-diagram-project"></i> Data Structures & Algorithms</span>
+              <span><i class="fa-solid fa-code"></i> C / C++ Programming</span>
               <span><i class="fa-solid fa-cube"></i> Object-Oriented Programming (OOP)</span>
-              <span><i class="fa-solid fa-globe"></i> Web Technologies (HTML5, CSS3, JS)</span>
-              <span><i class="fa-solid fa-database"></i> Database Management & SQL (MySQL)</span>
-              <span><i class="fa-brands fa-git-alt"></i> Version Control (Git & GitHub)</span>
-              <span><i class="fa-solid fa-laptop-code"></i> Operating Systems & SDLC Basics</span>
-              <span><i class="fa-solid fa-users-gear"></i> Agile / Scrum Workflow Awareness</span>
-              <span><i class="fa-solid fa-file-code"></i> Technical Documentation</span>
+              <span><i class="fa-solid fa-diagram-project"></i> Data Structures (Basics)</span>
+              <span><i class="fa-solid fa-globe"></i> Web Basics (HTML5, CSS3, JavaScript)</span>
+              <span><i class="fa-solid fa-database"></i> SQL / MySQL (Database Basics)</span>
+              <span><i class="fa-brands fa-git-alt"></i> Git & GitHub</span>
+              <span><i class="fa-solid fa-users-gear"></i> Academic Project Coordination</span>
             </div>
           </div>
           <div class="skill-category">
@@ -140,10 +144,37 @@
             <div class="skill-tags">
               <span><i class="fa-solid fa-comments"></i> Verbal & Written Communication</span>
               <span><i class="fa-solid fa-chalkboard-user"></i> Technical Presentation</span>
-              <span><i class="fa-solid fa-people-group"></i> Team Collaboration & Networking</span>
-              <span><i class="fa-solid fa-ear-listen"></i> Active Listening & Articulation</span>
-              <span><i class="fa-solid fa-handshake"></i> Professional Workplace Etiquette</span>
+              <span><i class="fa-solid fa-ear-listen"></i> Active Listening</span>
+              <span><i class="fa-solid fa-handshake"></i> Professional Etiquette</span>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Academic Projects -->
+      <section class="card-section">
+        <div class="section-header">
+          <div class="icon-circle"><i class="fa-solid fa-laptop-code"></i></div>
+          <h2>Academic Projects</h2>
+        </div>
+        <div class="projects-grid">
+          <div class="project-card">
+            <div class="project-header">
+              <h3>Interactive Web Resume & Portfolio</h3>
+              <span class="project-tech">HTML5 • CSS3 • JavaScript</span>
+            </div>
+            <p class="project-desc">
+              Developed a modern responsive web resume featuring clean CSS typography, dynamic click-to-copy clipboard actions with toast notifications, and dedicated print-to-PDF formatting.
+            </p>
+          </div>
+          <div class="project-card">
+            <div class="project-header">
+              <h3>Student Management Console Application</h3>
+              <span class="project-tech">C++ • OOP • File Handling</span>
+            </div>
+            <p class="project-desc">
+              Built a console-based management system applying Object-Oriented Programming principles to create, search, update, and manage persistent student academic records using C++ file streams.
+            </p>
           </div>
         </div>
       </section>
@@ -151,21 +182,21 @@
       <!-- History -->
       <section class="card-section">
         <div class="section-header">
-          <div class="icon-circle"><i class="fa-solid fa-briefcase"></i></div>
-          <h2>Academic & Practical Experience</h2>
+          <div class="icon-circle"><i class="fa-solid fa-graduation-cap"></i></div>
+          <h2>Academic Experience</h2>
         </div>
         <div class="exp-timeline">
           <div class="exp-item">
             <div class="exp-bullet"></div>
             <div class="exp-header">
               <h3>Global Institute of Engineering</h3>
-              <span class="exp-badge">Pursuing</span>
+              <span class="exp-badge">Pursuing (3rd Year)</span>
             </div>
             <p class="exp-sub">B.Tech in Computer Science & Engineering — Jabalpur, MP</p>
             <ul class="exp-list">
-              <li>Pursuing Bachelor of Technology in Computer Science and Engineering with focus on core computing fundamentals.</li>
-              <li>Actively building capabilities in programming, data structures, software tools, and technical problem-solving.</li>
-              <li>Collaborating with peer groups for technical projects, coding labs, and academic coursework.</li>
+              <li>Pursuing Bachelor of Technology in Computer Science and Engineering with focus on core programming and problem-solving.</li>
+              <li>Completed coursework in C++, Object-Oriented Programming, Data Structures fundamentals, and Database Systems.</li>
+              <li>Collaborating on coding labs, practical assignments, and academic technical projects.</li>
             </ul>
           </div>
 
@@ -177,8 +208,8 @@
             </div>
             <p class="exp-sub">Higher Secondary (12th) — Jabalpur, MP</p>
             <ul class="exp-list">
-              <li>Completed Higher Secondary Education (12th) with a strong academic foundation.</li>
-              <li>Developed analytical thinking, discipline, and active involvement in school activities.</li>
+              <li>Completed Higher Secondary Education (12th) with a solid academic foundation.</li>
+              <li>Developed disciplined study habits, analytical thinking, and participation in school co-curricular activities.</li>
             </ul>
           </div>
         </div>

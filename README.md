@@ -5,6 +5,7 @@ Ek clean, modern aur professional web-based resume template jise aap direct Goog
 ## 📁 File Structure
 - `index.html` : Resume ka core layout aur content.
 - `style.css` : Modern styling, dark sidebar, responsive grid aur typography.
+- `script.js` : Interactive features (Print / PDF download, click-to-copy toast).
 
 ## 🚀 Quick Steps for GitHub & Google Antigravity:
 1. GitHub par ek nayi repo banayein: `my-resume`.
