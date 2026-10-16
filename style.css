@@ -266,11 +266,12 @@ body {
 }
 
 .skill-category h4 {
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   color: var(--primary);
   text-transform: uppercase;
-  letter-spacing: 0.5px;
-  margin-bottom: 8px;
+  letter-spacing: 0.75px;
+  margin-bottom: 9px;
+  font-weight: 700;
 }
 
 .skill-tags {
@@ -280,7 +281,7 @@ body {
 }
 
 .skill-tags span {
-  background: #f1f5f9;
+  background: #f8fafc;
   color: #334155;
   padding: 6px 12px;
   border-radius: 8px;
@@ -288,12 +289,21 @@ body {
   font-weight: 500;
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 7px;
+  border: 1px solid #e2e8f0;
+  transition: all 0.2s ease;
+}
+
+.skill-tags span:hover {
+  background: var(--primary-light);
+  border-color: #bfdbfe;
+  color: var(--primary);
+  transform: translateY(-1px);
 }
 
 .skill-tags span i {
   color: var(--primary);
-  font-size: 0.75rem;
+  font-size: 0.78rem;
 }
 
 /* Timeline */
