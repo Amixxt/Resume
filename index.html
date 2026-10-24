@@ -1,30 +1,64 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Amit Kushwaha - Resume</title>
+  <title>Amit Kushwaha - Interactive Resume & Portfolio</title>
+  <meta name="description" content="Official interactive resume and portfolio of Amit Kushwaha, 3rd Year B.Tech Computer Science & Engineering student at Global Institute of Engineering." />
   <link rel="stylesheet" href="style.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <script src="script.js" defer></script>
 </head>
 <body>
-  <!-- Action Bar -->
-  <div class="action-bar">
-    <button id="print-resume-btn" class="action-btn">
-      <i class="fa-solid fa-print"></i> Print / Save as PDF
-    </button>
-  </div>
+  <!-- Reading Progress Bar -->
+  <div id="scroll-progress"></div>
+
+  <!-- Interactive Particle Mesh Canvas Background -->
+  <canvas id="bg-canvas" aria-hidden="true"></canvas>
+
+  <!-- Top Action Navigation Bar -->
+  <header class="action-bar" role="banner">
+    <div class="brand-tag">
+      <span class="live-dot" aria-hidden="true"></span>
+      <span>OPEN TO INTERNSHIPS</span>
+    </div>
+    <div class="action-buttons">
+      <button id="theme-toggle" class="action-btn" title="Toggle Dark/Light Mode" aria-label="Toggle theme">
+        <i class="fa-solid fa-moon"></i>
+        <span class="btn-text">Theme</span>
+      </button>
+      <button id="open-ai-btn" class="action-btn ai-highlight-btn" title="Ask Amit's AI Assistant" aria-label="Open AI Assistant">
+        <i class="fa-solid fa-sparkles"></i>
+        <span class="btn-text">Ask AI</span>
+      </button>
+      <button id="print-resume-btn" class="action-btn" title="Save as ATS-friendly PDF" aria-label="Print or Save Resume as PDF">
+        <i class="fa-solid fa-print"></i>
+        <span class="btn-text">Save PDF</span>
+      </button>
+      <a href="https://amit-portfolio-git-main-amixxt.vercel.app/" target="_blank" rel="noreferrer" class="action-btn portfolio-btn" title="Visit Full Portfolio Website">
+        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+        <span class="btn-text">Portfolio</span>
+      </a>
+    </div>
+  </header>
 
   <div class="resume-wrapper">
     <!-- Sidebar -->
     <aside class="sidebar">
       <div class="profile-card">
+        <div class="avatar-ring">
+          <div class="avatar-placeholder">
+            <i class="fa-solid fa-user-code"></i>
+          </div>
+        </div>
         <h1 class="user-name">AMIT <span>KUSHWAHA</span></h1>
         <p class="user-role">3rd Year B.Tech Student in CSE</p>
+        <div class="availability-badge">
+          <span class="pulse-dot"></span> Available for Tech Internships
+        </div>
       </div>
 
       <div class="side-block">
@@ -34,21 +68,27 @@
             <i class="fa-solid fa-envelope"></i>
             <div>
               <span class="label">Email</span>
-              <a href="mailto:hydranarcoo@gmail.com" class="copy-trigger" data-copy="hydranarcoo@gmail.com" data-type="Email" title="Click to copy email">hydranarcoo@gmail.com</a>
+              <a href="https://mail.google.com/mail/?view=cm&fs=1&to=hydranarcoo@gmail.com" target="_blank" rel="noreferrer" class="email-link" title="Open in Gmail">hydranarcoo@gmail.com</a>
+              <button class="copy-mini-btn" data-copy="hydranarcoo@gmail.com" data-type="Email" title="Copy email address" aria-label="Copy email">
+                <i class="fa-regular fa-copy"></i>
+              </button>
             </div>
           </li>
           <li>
             <i class="fa-solid fa-phone"></i>
             <div>
               <span class="label">Phone</span>
-              <a href="tel:+918109315812" class="copy-trigger" data-copy="+918109315812" data-type="Phone number" title="Click to copy phone">+91 8109315812</a>
+              <a href="tel:+918109315812" class="phone-link">+91 8109315812</a>
+              <button class="copy-mini-btn" data-copy="+918109315812" data-type="Phone number" title="Copy phone number" aria-label="Copy phone">
+                <i class="fa-regular fa-copy"></i>
+              </button>
             </div>
           </li>
           <li>
             <i class="fa-solid fa-location-dot"></i>
             <div>
               <span class="label">Location</span>
-              <span>Jabalpur, India - 482004</span>
+              <span>Jabalpur, Madhya Pradesh, India - 482004</span>
             </div>
           </li>
         </ul>
@@ -57,14 +97,16 @@
       <div class="side-block">
         <h3 class="side-heading"><i class="fa-solid fa-graduation-cap"></i> Education</h3>
         <div class="edu-card">
-          <h4>B.Tech, CSE</h4>
+          <div class="edu-year">2022 — Present</div>
+          <h4>B.Tech in Computer Science & Engineering</h4>
           <p class="college-name">Global Institute of Engineering</p>
           <span class="badge">Currently Pursuing (3rd Year)</span>
         </div>
-        <div class="edu-card" style="margin-top: 15px;">
-          <h4>Higher Secondary (12th)</h4>
+        <div class="edu-card" style="margin-top: 16px;">
+          <div class="edu-year">Completed</div>
+          <h4>Higher Secondary (12th Science)</h4>
           <p class="college-name">Green Valley Public School</p>
-          <span class="badge-secondary">Completed</span>
+          <span class="badge-secondary">State Board Foundation</span>
         </div>
       </div>
 
@@ -73,130 +115,255 @@
         <div class="lang-row">
           <div class="lang-info">
             <span>Hindi</span>
-            <span>Advanced (C1)</span>
+            <span>Native / Advanced (C1)</span>
           </div>
           <div class="bar-bg"><div class="bar-fill" style="width: 95%;"></div></div>
         </div>
         <div class="lang-row">
           <div class="lang-info">
             <span>English</span>
-            <span>Intermediate (B2)</span>
+            <span>Professional Working (B2)</span>
           </div>
-          <div class="bar-bg"><div class="bar-fill" style="width: 75%;"></div></div>
+          <div class="bar-bg"><div class="bar-fill" style="width: 78%;"></div></div>
         </div>
       </div>
 
       <div class="side-block">
-        <h3 class="side-heading"><i class="fa-solid fa-compass"></i> Interests</h3>
+        <h3 class="side-heading"><i class="fa-solid fa-compass"></i> Core Focus</h3>
         <div class="chip-group">
-          <span class="chip">Problem Solving</span>
-          <span class="chip">Web Basics</span>
-          <span class="chip">Computer Systems</span>
-          <span class="chip">Coding Practice</span>
+          <span class="chip"><i class="fa-solid fa-code"></i> Data Structures</span>
+          <span class="chip"><i class="fa-solid fa-cubes"></i> C++ OOP</span>
+          <span class="chip"><i class="fa-solid fa-layer-group"></i> Frontend Dev</span>
+          <span class="chip"><i class="fa-solid fa-database"></i> SQL Basics</span>
+          <span class="chip"><i class="fa-solid fa-bug"></i> Problem Solving</span>
+        </div>
+      </div>
+
+      <!-- Social Links in Sidebar -->
+      <div class="side-block sidebar-socials">
+        <h3 class="side-heading"><i class="fa-solid fa-share-nodes"></i> Connect</h3>
+        <div class="social-links-grid">
+          <a href="https://github.com/Amixxt" target="_blank" rel="noreferrer" class="social-btn" title="GitHub Profile">
+            <i class="fa-brands fa-github"></i> GitHub
+          </a>
+          <a href="https://www.linkedin.com/in/amixxt" target="_blank" rel="noreferrer" class="social-btn" title="LinkedIn Profile">
+            <i class="fa-brands fa-linkedin"></i> LinkedIn
+          </a>
+          <a href="https://www.instagram.com/why_amixt/" target="_blank" rel="noreferrer" class="social-btn" title="Instagram Profile">
+            <i class="fa-brands fa-instagram"></i> Instagram
+          </a>
+          <a href="https://mail.google.com/mail/?view=cm&fs=1&to=hydranarcoo@gmail.com" target="_blank" rel="noreferrer" class="social-btn email-btn" title="Send Email">
+            <i class="fa-solid fa-envelope"></i> Email
+          </a>
         </div>
       </div>
     </aside>
 
     <!-- Main Content -->
     <main class="main-body">
-      <!-- Summary -->
+      <!-- Professional Summary -->
       <section class="card-section">
         <div class="section-header">
           <div class="icon-circle"><i class="fa-solid fa-sparkles"></i></div>
           <h2>Professional Summary</h2>
         </div>
         <p class="summary-para">
-          Motivated 3rd-year B.Tech Computer Science & Engineering student at Global Institute of Engineering with a solid academic background from Green Valley Public School. Sound understanding of C++, Object-Oriented Programming (OOP), fundamental data structures, and foundational web development (HTML, CSS, JavaScript). Passionate about writing clean code, solving logical problems, and actively seeking an entry-level software or internship role to contribute and grow within a tech team.
+          Motivated 3rd-year B.Tech Computer Science & Engineering student at Global Institute of Engineering with a solid academic foundation from Green Valley Public School. Deep passion for core programming with <strong>C++</strong>, <strong>Object-Oriented Programming (OOP)</strong>, fundamental <strong>Data Structures & Algorithms</strong>, and responsive <strong>Web Development (HTML5, CSS3, Modern JavaScript)</strong>. Dedicated to writing clean, maintainable code, solving complex logic problems, and actively seeking an entry-level software engineering internship or apprenticeship to contribute to high-impact tech products.
         </p>
       </section>
 
-      <!-- Skills -->
+      <!-- Interactive Skill Matrix -->
       <section class="card-section">
-        <div class="section-header">
-          <div class="icon-circle"><i class="fa-solid fa-bolt"></i></div>
-          <h2>Key Competencies & Skills</h2>
+        <div class="section-header space-between">
+          <div class="header-left">
+            <div class="icon-circle"><i class="fa-solid fa-bolt"></i></div>
+            <h2>Technical & Key Competencies</h2>
+          </div>
+          <!-- Skill Filter Pills -->
+          <div class="skill-filters" role="tablist">
+            <button class="filter-pill active" data-filter="all">All</button>
+            <button class="filter-pill" data-filter="core">Core Tech</button>
+            <button class="filter-pill" data-filter="web">Web</button>
+            <button class="filter-pill" data-filter="soft">Soft Skills</button>
+          </div>
         </div>
+
         <div class="skills-container">
-          <div class="skill-category">
-            <h4>Core Strengths</h4>
+          <!-- Core Programming -->
+          <div class="skill-category" data-category="core">
+            <h4><i class="fa-solid fa-terminal"></i> Programming & Computer Science</h4>
             <div class="skill-tags">
-              <span><i class="fa-solid fa-lightbulb"></i> Problem Solving & Logic</span>
-              <span><i class="fa-solid fa-brain"></i> Analytical Thinking</span>
-              <span><i class="fa-solid fa-bolt"></i> Fast Learner</span>
-              <span><i class="fa-solid fa-clock"></i> Time Management</span>
-              <span><i class="fa-solid fa-people-arrows"></i> Team Collaboration</span>
+              <span class="skill-tag" data-level="Advanced">
+                <i class="fa-solid fa-code"></i> C / C++ Programming
+                <small class="tag-level">Primary</small>
+              </span>
+              <span class="skill-tag" data-level="Proficient">
+                <i class="fa-solid fa-cube"></i> Object-Oriented Programming (OOP)
+                <small class="tag-level">Core</small>
+              </span>
+              <span class="skill-tag" data-level="Intermediate">
+                <i class="fa-solid fa-diagram-project"></i> Data Structures (Arrays, Lists, Trees)
+                <small class="tag-level">Intermediate</small>
+              </span>
+              <span class="skill-tag" data-level="Familiar">
+                <i class="fa-solid fa-database"></i> SQL / Relational Databases (MySQL)
+                <small class="tag-level">Working</small>
+              </span>
+              <span class="skill-tag" data-level="Proficient">
+                <i class="fa-brands fa-git-alt"></i> Git & GitHub Version Control
+                <small class="tag-level">Daily</small>
+              </span>
             </div>
           </div>
-          <div class="skill-category">
-            <h4>Technical & Management</h4>
+
+          <!-- Web Development -->
+          <div class="skill-category" data-category="web">
+            <h4><i class="fa-solid fa-globe"></i> Frontend & Web Technologies</h4>
             <div class="skill-tags">
-              <span><i class="fa-solid fa-code"></i> C / C++ Programming</span>
-              <span><i class="fa-solid fa-cube"></i> Object-Oriented Programming (OOP)</span>
-              <span><i class="fa-solid fa-diagram-project"></i> Data Structures (Basics)</span>
-              <span><i class="fa-solid fa-globe"></i> Web Basics (HTML5, CSS3, JavaScript)</span>
-              <span><i class="fa-solid fa-database"></i> SQL / MySQL (Database Basics)</span>
-              <span><i class="fa-brands fa-git-alt"></i> Git & GitHub</span>
-              <span><i class="fa-solid fa-users-gear"></i> Academic Project Coordination</span>
+              <span class="skill-tag" data-level="Advanced">
+                <i class="fa-brands fa-html5"></i> HTML5 (Semantic & Accessible)
+                <small class="tag-level">Advanced</small>
+              </span>
+              <span class="skill-tag" data-level="Advanced">
+                <i class="fa-brands fa-css3-alt"></i> CSS3 (Flexbox, Grid, Animations)
+                <small class="tag-level">Advanced</small>
+              </span>
+              <span class="skill-tag" data-level="Proficient">
+                <i class="fa-brands fa-js"></i> Modern JavaScript (ES6+, DOM, Async)
+                <small class="tag-level">Proficient</small>
+              </span>
+              <span class="skill-tag" data-level="Working">
+                <i class="fa-solid fa-bezier-curve"></i> Canvas API & Micro-Interactions
+                <small class="tag-level">Interactive</small>
+              </span>
+              <span class="skill-tag" data-level="Working">
+                <i class="fa-solid fa-mobile-screen"></i> Responsive Cross-Device UI Design
+                <small class="tag-level">Responsive</small>
+              </span>
             </div>
           </div>
-          <div class="skill-category">
-            <h4>Interpersonal & Communication</h4>
+
+          <!-- Interpersonal & Problem Solving -->
+          <div class="skill-category" data-category="soft">
+            <h4><i class="fa-solid fa-brain"></i> Analytical & Interpersonal Strengths</h4>
             <div class="skill-tags">
-              <span><i class="fa-solid fa-comments"></i> Verbal & Written Communication</span>
-              <span><i class="fa-solid fa-chalkboard-user"></i> Technical Presentation</span>
-              <span><i class="fa-solid fa-ear-listen"></i> Active Listening</span>
-              <span><i class="fa-solid fa-handshake"></i> Professional Etiquette</span>
+              <span class="skill-tag"><i class="fa-solid fa-lightbulb"></i> Problem Solving & Logic</span>
+              <span class="skill-tag"><i class="fa-solid fa-chart-line"></i> Analytical Thinking</span>
+              <span class="skill-tag"><i class="fa-solid fa-bolt"></i> Fast Adaptive Learner</span>
+              <span class="skill-tag"><i class="fa-solid fa-users"></i> Team Collaboration & Peer Review</span>
+              <span class="skill-tag"><i class="fa-solid fa-comments"></i> Technical Presentation</span>
+              <span class="skill-tag"><i class="fa-solid fa-clock"></i> Time Management & Discipline</span>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- Academic Projects -->
+      <!-- Interactive Projects Showcase -->
       <section class="card-section">
-        <div class="section-header">
-          <div class="icon-circle"><i class="fa-solid fa-laptop-code"></i></div>
-          <h2>Academic Projects</h2>
+        <div class="section-header space-between">
+          <div class="header-left">
+            <div class="icon-circle"><i class="fa-solid fa-laptop-code"></i></div>
+            <h2>Technical & Academic Projects</h2>
+          </div>
+          <!-- Project Category Filter -->
+          <div class="project-filters">
+            <button class="proj-filter-btn active" data-proj="all">All</button>
+            <button class="proj-filter-btn" data-proj="web">Web</button>
+            <button class="proj-filter-btn" data-proj="cpp">C++ Systems</button>
+          </div>
         </div>
+
         <div class="projects-grid">
-          <div class="project-card">
+          <!-- Project 1: Portfolio & Interactive Resume -->
+          <article class="project-card" data-proj-type="web">
             <div class="project-header">
-              <h3>Interactive Web Resume & Portfolio</h3>
-              <span class="project-tech">HTML5 • CSS3 • JavaScript</span>
+              <div class="title-with-badge">
+                <h3>Interactive Web Portfolio & Digital Resume</h3>
+                <span class="status-pill live-pill"><i class="fa-solid fa-circle"></i> Live</span>
+              </div>
+              <span class="project-tech">HTML5 • CSS3 • JavaScript • Canvas</span>
             </div>
             <p class="project-desc">
-              Developed a modern responsive web resume featuring clean CSS typography, dynamic click-to-copy clipboard actions with toast notifications, and dedicated print-to-PDF formatting.
+              Engineered a high-performance, responsive personal web portfolio and digital resume. Features dark/light themes, interactive particle canvas background, click-to-copy clipboard actions with toast notifications, and an embedded context-aware AI assistant widget.
             </p>
-          </div>
-          <div class="project-card">
+            <div class="project-features">
+              <span><i class="fa-solid fa-check"></i> ATS-optimized print formatting</span>
+              <span><i class="fa-solid fa-check"></i> Zero-dependency vanilla performance</span>
+            </div>
+            <div class="project-actions">
+              <a href="https://amit-portfolio-git-main-amixxt.vercel.app/" target="_blank" rel="noreferrer" class="card-btn primary-card-btn">
+                <i class="fa-solid fa-external-link"></i> Live Demo
+              </a>
+              <a href="https://github.com/Amixxt/Resume" target="_blank" rel="noreferrer" class="card-btn secondary-card-btn">
+                <i class="fa-brands fa-github"></i> Repository
+              </a>
+            </div>
+          </article>
+
+          <!-- Project 2: C++ Student Management System -->
+          <article class="project-card" data-proj-type="cpp">
             <div class="project-header">
-              <h3>Student Management Console Application</h3>
-              <span class="project-tech">C++ • OOP • File Handling</span>
+              <div class="title-with-badge">
+                <h3>Student Management Console System</h3>
+                <span class="status-pill academic-pill">Academic Project</span>
+              </div>
+              <span class="project-tech">C++ • OOP • File Streams</span>
             </div>
             <p class="project-desc">
-              Built a console-based management system applying Object-Oriented Programming principles to create, search, update, and manage persistent student academic records using C++ file streams.
+              Architected a robust console-based records management application utilizing Object-Oriented Programming (OOP) paradigms. Implemented classes, encapsulation, data validation, and persistent file I/O to store, retrieve, update, and search student academic credentials with error checking.
             </p>
-          </div>
+            <div class="project-features">
+              <span><i class="fa-solid fa-check"></i> Modular OOP design (Inheritance & Polymorphism)</span>
+              <span><i class="fa-solid fa-check"></i> Persistent file handling streams</span>
+            </div>
+            <div class="project-actions">
+              <span class="card-badge-info"><i class="fa-solid fa-terminal"></i> Console Application</span>
+            </div>
+          </article>
+
+          <!-- Project 3: CivicGrid Focus Utility -->
+          <article class="project-card" data-proj-type="web">
+            <div class="project-header">
+              <div class="title-with-badge">
+                <h3>CivicGrid Focus Session Visualizer</h3>
+                <span class="status-pill completed-pill">Prototype</span>
+              </div>
+              <span class="project-tech">JavaScript • Canvas API • LocalStorage</span>
+            </div>
+            <p class="project-desc">
+              Created an interactive productivity and time tracking interface with visual progress dashboards, custom timer cycles, and state persistence for monitoring study and coding sessions effectively.
+            </p>
+            <div class="project-features">
+              <span><i class="fa-solid fa-check"></i> Real-time canvas graphics rendering</span>
+              <span><i class="fa-solid fa-check"></i> Offline persistence via Web Storage</span>
+            </div>
+            <div class="project-actions">
+              <a href="https://github.com/wiroxa/CivicGrid" target="_blank" rel="noreferrer" class="card-btn secondary-card-btn">
+                <i class="fa-brands fa-github"></i> View Architecture
+              </a>
+            </div>
+          </article>
         </div>
       </section>
 
-      <!-- History -->
+      <!-- Academic Experience & Timeline -->
       <section class="card-section">
         <div class="section-header">
           <div class="icon-circle"><i class="fa-solid fa-graduation-cap"></i></div>
-          <h2>Academic Experience</h2>
+          <h2>Academic Journey & Experience</h2>
         </div>
         <div class="exp-timeline">
           <div class="exp-item">
             <div class="exp-bullet"></div>
             <div class="exp-header">
               <h3>Global Institute of Engineering</h3>
-              <span class="exp-badge">Pursuing (3rd Year)</span>
+              <span class="exp-badge">3rd Year CSE</span>
             </div>
-            <p class="exp-sub">B.Tech in Computer Science & Engineering — Jabalpur, MP</p>
+            <p class="exp-sub">Bachelor of Technology in Computer Science & Engineering — Jabalpur, MP (2022 - Present)</p>
             <ul class="exp-list">
-              <li>Pursuing Bachelor of Technology in Computer Science and Engineering with focus on core programming and problem-solving.</li>
-              <li>Completed coursework in C++, Object-Oriented Programming, Data Structures fundamentals, and Database Systems.</li>
-              <li>Collaborating on coding labs, practical assignments, and academic technical projects.</li>
+              <li>Active coursework in C++, Object-Oriented Analysis & Design, Data Structures, Operating Systems fundamentals, and Relational Databases.</li>
+              <li>Hands-on participation in coding laboratories, practical algorithm evaluations, and collaborative team assignments.</li>
+              <li>Consistent focus on mastering core computer science principles and software engineering best practices.</li>
             </ul>
           </div>
 
@@ -204,17 +371,96 @@
             <div class="exp-bullet"></div>
             <div class="exp-header">
               <h3>Green Valley Public School</h3>
-              <span class="exp-badge-alt">Completed</span>
+              <span class="exp-badge-alt">Higher Secondary (12th)</span>
             </div>
-            <p class="exp-sub">Higher Secondary (12th) — Jabalpur, MP</p>
+            <p class="exp-sub">Higher Secondary Education — Jabalpur, MP (Completed)</p>
             <ul class="exp-list">
-              <li>Completed Higher Secondary Education (12th) with a solid academic foundation.</li>
-              <li>Developed disciplined study habits, analytical thinking, and participation in school co-curricular activities.</li>
+              <li>Completed 12th standard with comprehensive foundation in Physics, Chemistry, and Mathematics.</li>
+              <li>Fostered structured logical problem-solving methodology, strong analytical mindset, and academic discipline.</li>
             </ul>
           </div>
         </div>
       </section>
     </main>
   </div>
+
+  <!-- Footer with verified social connections -->
+  <footer class="resume-footer" role="contentinfo">
+    <div class="footer-inner">
+      <p class="footer-copy">© 2026 Amit Kushwaha • Crafted with clean Vanilla Web Standards</p>
+      <div class="footer-links">
+        <a href="https://github.com/Amixxt" target="_blank" rel="noreferrer">
+          <i class="fa-brands fa-github"></i> GitHub
+        </a>
+        <a href="https://www.linkedin.com/in/amixxt" target="_blank" rel="noreferrer">
+          <i class="fa-brands fa-linkedin"></i> LinkedIn
+        </a>
+        <a href="https://www.instagram.com/why_amixt/" target="_blank" rel="noreferrer">
+          <i class="fa-brands fa-instagram"></i> Instagram
+        </a>
+        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=hydranarcoo@gmail.com" target="_blank" rel="noreferrer" class="footer-email-link">
+          <i class="fa-solid fa-envelope"></i> Email
+        </a>
+      </div>
+      <button id="back-to-top" class="back-to-top-btn" title="Back to Top" aria-label="Scroll back to top">
+        <i class="fa-solid fa-arrow-up"></i> Top
+      </button>
+    </div>
+  </footer>
+
+  <!-- Smart "Ask Amit" AI Assistant Widget Modal / Drawer -->
+  <div id="ai-assistant-widget" class="ai-widget-wrapper" aria-hidden="true">
+    <div class="ai-widget-container">
+      <div class="ai-header">
+        <div class="ai-header-info">
+          <div class="ai-avatar">
+            <i class="fa-solid fa-sparkles"></i>
+          </div>
+          <div>
+            <h4>Amit's Assistant <span class="ai-badge">AI Assistant</span></h4>
+            <p class="ai-status"><span class="status-dot"></span> Ready to answer questions about Amit</p>
+          </div>
+        </div>
+        <button id="close-ai-btn" class="ai-close-btn" aria-label="Close Assistant">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <!-- Quick Topic Pills -->
+      <div class="ai-quick-prompts">
+        <button class="ai-prompt-chip" data-prompt="skills">⚡ Skills</button>
+        <button class="ai-prompt-chip" data-prompt="projects">💻 Projects</button>
+        <button class="ai-prompt-chip" data-prompt="internship">🎯 Internship</button>
+        <button class="ai-prompt-chip" data-prompt="contact">📬 Contact</button>
+      </div>
+
+      <!-- Chat Messages Container -->
+      <div class="ai-messages" id="ai-messages-list">
+        <div class="ai-msg bot-msg">
+          <div class="msg-bubble">
+            Hello! I am Amit's interactive assistant. Ask me anything about his technical skills in C++, web development, projects, or internship availability!
+          </div>
+        </div>
+      </div>
+
+      <!-- Chat Input Form -->
+      <form id="ai-chat-form" class="ai-input-form">
+        <input type="text" id="ai-chat-input" placeholder="Ask a question (e.g., 'What are Amit's main skills?')" autocomplete="off" required />
+        <button type="submit" id="ai-send-btn" aria-label="Send question">
+          <i class="fa-solid fa-paper-plane"></i>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Floating AI Assistant Launcher Button -->
+  <button id="floating-ai-launcher" class="floating-ai-btn" aria-label="Open AI Assistant" title="Chat with Amit's AI Assistant">
+    <span class="ai-glow"></span>
+    <i class="fa-solid fa-sparkles"></i>
+    <span class="launcher-label">Ask Amit AI</span>
+  </button>
+
+  <!-- Toast Notification System -->
+  <div id="resume-toast" role="status" aria-live="polite"></div>
 </body>
 </html>
