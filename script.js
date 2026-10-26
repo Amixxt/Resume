@@ -296,7 +296,25 @@ document.addEventListener('DOMContentLoaded', () => {
   if (floatingAiLauncher) floatingAiLauncher.addEventListener('click', () => toggleAiWidget(true));
   if (closeAiBtn) closeAiBtn.addEventListener('click', () => toggleAiWidget(false));
 
-  // Assistant Knowledge Base Engine
+  // Comprehensive System Knowledge Prompt for Amit Kushwaha
+  const AMIT_AI_SYSTEM_PROMPT = `You are Amit's friendly personal AI assistant on his interactive portfolio & resume website.
+Amit Kushwaha is an authentic 3rd-year B.Tech Computer Science & Engineering student at Global Institute of Engineering, Jabalpur (expected graduation: 2026). He completed his 12th standard (Science) from Green Valley Public School, Jabalpur.
+- Technical Skills:
+  * Languages: C, C++ (strong Object-Oriented Programming & Data Structures fundamentals), JavaScript (ES6+), TypeScript, Python
+  * Web Tech: Semantic HTML5, modern CSS3 (Flexbox/Grid/Animations), React
+  * Databases & Tools: SQL/MySQL basics, Git & GitHub for version control
+- Key Projects:
+  1. Interactive Web Portfolio & ATS Resume: Modern responsive interface built with clean HTML5, CSS3, JavaScript, Canvas API particle mesh, zero external bloat.
+  2. Student Management Console System: C++ application using OOP principles (inheritance, encapsulation) and persistent file streams.
+  3. CivicGrid Focus Visualizer: JavaScript productivity utility with visual state rendering.
+- Internship & Career Status: Actively seeking Software Engineering, C++ Developer, or Web Development internships (open to remote & on-site roles).
+- Contact Info: Email: hydranarcoo@gmail.com, Phone: +91 8109315812, Location: Jabalpur, Madhya Pradesh, India (PIN 482004), GitHub: github.com/Amixxt, Portfolio: https://amixtportfolio.vercel.app/
+- Guidelines:
+  * Respond warmly, politely, and enthusiastically in 2 to 3 concise sentences.
+  * Adapt to the user's language: if greeted or asked in Hindi or Hinglish (e.g., "kaise ho", "kya chal raha hai", "batao", "kya skills hai"), reply warmly in natural Hinglish/Hindi. If asked in English, reply in crisp English.
+  * Stick strictly to Amit's true background and skills.`;
+
+  // Local Knowledge Base Fallback Engine (instant offline backup)
   const generateAiAnswer = (query) => {
     const q = query.toLowerCase().trim();
 
@@ -324,11 +342,36 @@ document.addEventListener('DOMContentLoaded', () => {
       return "Amit is based in Jabalpur, Madhya Pradesh, India (482004). He is available for remote internships as well as on-site opportunities.";
     }
 
-    if (q.includes('hello') || q.includes('hi') || q.includes('hey') || q.includes('namaste')) {
-      return "Hello! Great to meet you. I can assist you with details regarding Amit's coding projects, technical skill stack, academic credentials, or direct contact info. What would you like to know?";
+    if (q.includes('hello') || q.includes('hi') || q.includes('hey') || q.includes('namaste') || q.includes('kaise')) {
+      return "Hey! Great to connect with you. I can assist you with details regarding Amit's coding projects, C++ and web stack, academic credentials, or direct contact info. What would you like to know?";
     }
 
     return "Amit is a 3rd-year B.Tech CSE student passionate about C++, OOP, and modern web interfaces. Feel free to ask about his technical skills, academic projects, or internship availability, or reach out to him directly at hydranarcoo@gmail.com!";
+  };
+
+  // Real AI Fetch with Timeout & Local Fallback
+  const fetchRealAiResponse = async (userQuery) => {
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 6500);
+
+    const fullPrompt = `${AMIT_AI_SYSTEM_PROMPT}\n\nUser Question: ${userQuery}\n\nHelpful, concise answer as Amit's Assistant:`;
+    const url = `https://text.pollinations.ai/${encodeURIComponent(fullPrompt)}`;
+
+    try {
+      const response = await fetch(url, {
+        method: 'GET',
+        signal: controller.signal,
+      });
+      clearTimeout(timeoutId);
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      const text = await response.text();
+      if (!text || !text.trim()) throw new Error('Empty response');
+      return text.trim();
+    } catch (err) {
+      clearTimeout(timeoutId);
+      console.warn('Real AI endpoint unavailable, using local knowledge engine:', err);
+      return generateAiAnswer(userQuery);
+    }
   };
 
   const appendMessage = (text, isUser = false) => {
@@ -346,7 +389,7 @@ document.addEventListener('DOMContentLoaded', () => {
     aiMessagesList.scrollTop = aiMessagesList.scrollHeight;
   };
 
-  const handleUserInput = (inputText) => {
+  const handleUserInput = async (inputText) => {
     if (!inputText || !inputText.trim()) return;
     appendMessage(inputText, true);
 
@@ -357,11 +400,15 @@ document.addEventListener('DOMContentLoaded', () => {
     aiMessagesList.appendChild(typingDiv);
     aiMessagesList.scrollTop = aiMessagesList.scrollHeight;
 
-    setTimeout(() => {
+    try {
+      const botReply = await fetchRealAiResponse(inputText);
       typingDiv.remove();
-      const botReply = generateAiAnswer(inputText);
       appendMessage(botReply, false);
-    }, 450);
+    } catch {
+      typingDiv.remove();
+      const fallbackReply = generateAiAnswer(inputText);
+      appendMessage(fallbackReply, false);
+    }
   };
 
   if (aiChatForm) {
